@@ -1,0 +1,101 @@
+                                      TASK 1 [INTERSHIP COD TECH IT SOLUTION]
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+df = pd.read_csv("C:/INTERSHIP TASKS/CODTECH PVT INT/retail_sales_dataset.csv")
+df.head() 
+
+# 1.head method shows us only the frist 5 rows
+print(df.head())
+# 2.get the number of rows and columns
+print(df.shape)
+#3.get column names
+print(df.columns)
+#4. get the dtype of each column
+print(df.dtypes)
+#5. get more information about data
+print (df.info())
+
+#6 
+       #LOOKING AT COLUMNS,ROWS, AND CELLS
+#get the Gender column and save it to its own variable
+Gender_df =df['Gender']
+#show the first 5 observations
+print(Gender_df.head())
+# show the last 5 observations
+print(Gender_df.tail())
+
+#7. LOOKING AT COUNTRY,CONTINENT,AND YEAR
+#show the first 5 observations
+subset = df[['Gender','Age','Product Category']]
+print(subset.head())
+# show the last 5 observations
+print(subset.tail())
+
+#8
+    #LOOKING AT COLUMNS,ROWS,AND CELLS
+#subset rows by index label:loc
+# frist look into file
+print(df.head())
+#get the first row (python counts from 0)
+print(df.loc[0])
+
+#get the 100th row
+# python counts from 0
+print(df.loc[99])
+# get the last row
+print(df.tail(n=1))
+
+#9.SUBSETTING MULTIPLE ROWS
+        #select the frist ,100th,and 1000th rows
+print(df.loc[[0,99,999]])
+
+#10. SUBSET ROWS Y ROW NUMBER:iloc
+    #get the 2nd row
+print(df.iloc[1])
+
+#get the 100th row
+print(df.iloc[99])
+# using -1 to get the last row
+print(df.iloc[-1])
+#get the first,100th,and 1000th rows
+print(df.iloc[[0,99,999]])
+# 11. SUBSETTING COLUMNS
+    #subset columns with loc
+    #note the position of the colon
+    #it is used to select all rows
+
+subset = df.loc[:,['Date','Gender']]
+print(subset.head())
+
+#12. subset columns with iloc
+# iloc will alow us to use integers
+# -1 will select the last column
+
+subset = df.iloc[:,[2,4,-1]]
+print (subset.head())
+
+# 13 subsetting columns by range 
+# create a range of integers from 0 to 4 inclusive
+
+small_range = list(range(5))
+print(small_range)
+# subset the dataframe with the range
+subset = df.iloc[:,small_range]
+print(subset.head())
+
+#14 SUBSETTING ROWS AND COLUMNS
+# using loc
+print (df.loc[42,'Gender'])
+print(df.iloc[42,0])
+
+#15 SUBSETTING MULTIPLE ROWS AND COLUMNS
+ # get the 1st,100th and 1000th rows
+#from the 1st, 4th,and 6th columns
+print(df.iloc[[0,99,999],[0,3,5]])
+
+print(df.loc[[0,99,999],['Gender','Age','Quantity']])
+print(df.loc[10:13,['Gender','Age','Quantity']])
+
+#16 group using
+print(df.groupby('Quantity')['Price per Unit'].mean())
